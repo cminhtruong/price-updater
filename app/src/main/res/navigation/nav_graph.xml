@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listProductFragments">
+
+    <fragment
+        android:id="@+id/listProductFragments"
+        android:name="app.el_even.priceupdater.views.fragments.ListProductFragments"
+        android:label="list_product_fragments_fragment"
+        tools:layout="@layout/list_product_fragments_fragment" >
+        <action
+            android:id="@+id/action_listProductFragments_to_detailProductFragments"
+            app:destination="@id/detailProductFragments" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProductFragments"
+        android:name="app.el_even.priceupdater.views.fragments.DetailProductFragments"
+        android:label="detail_product_fragments_fragment"
+        tools:layout="@layout/detail_product_fragments_fragment" />
+</navigation>
