@@ -10,7 +10,9 @@ data class Product(
     val name: String,
     val url: String,
     val image: List<String>,
-    val price: Float,
+    val oldPrice: Float,
+    val newPrice: Float? = 0.0f,
+    val date: String,
     val brand: Brand
 )
 

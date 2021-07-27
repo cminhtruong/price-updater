@@ -9,7 +9,7 @@
         android:id="@+id/listProductFragments"
         android:name="app.el_even.priceupdater.views.fragments.ListProductFragments"
         android:label="list_product_fragments_fragment"
-        tools:layout="@layout/list_product_fragments_fragment" >
+        tools:layout="@layout/list_product_fragment" >
         <action
             android:id="@+id/action_listProductFragments_to_detailProductFragments"
             app:destination="@id/detailProductFragments" />
@@ -18,5 +18,5 @@
         android:id="@+id/detailProductFragments"
         android:name="app.el_even.priceupdater.views.fragments.DetailProductFragments"
         android:label="detail_product_fragments_fragment"
-        tools:layout="@layout/detail_product_fragments_fragment" />
+        tools:layout="@layout/detail_product_fragment" />
 </navigation>

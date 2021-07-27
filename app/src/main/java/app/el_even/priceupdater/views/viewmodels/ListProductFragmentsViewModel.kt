@@ -2,6 +2,9 @@ package app.el_even.priceupdater.views.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
+import app.el_even.priceupdater.databases.ProductDatabase
+import app.el_even.priceupdater.databases.ProductRepository
+import app.el_even.priceupdater.models.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -18,6 +21,15 @@ class ListProductFragmentsViewModel(application: Application) : ViewModel() {
 
     private val _isProgressBarDisplayed = MutableLiveData<Boolean>()
     val isProgressBarDisplayed: LiveData<Boolean> = _isProgressBarDisplayed
+
+    private val repository = ProductRepository(
+        ProductDatabase.getDatabase(
+            application.applicationContext,
+            viewModelScope
+        )
+    )
+
+    val products: LiveData<List<Product>> = repository.products.asLiveData()
 
     init {
         _isFabClicked.value = false

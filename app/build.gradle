@@ -110,4 +110,7 @@ dependencies {
 
     // Jsoup
     implementation "org.jsoup:jsoup:$version_jsoup"
+
+    // Serialization
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
 }

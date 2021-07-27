@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Price Updater</string>
     <string name="price_list">Price list</string>
+    <string name="url_hint">http://www...</string>
+    <string name="ok_btn">OK</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="url_dialog_title">Paste your URL here</string>
 </resources>

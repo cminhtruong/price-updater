@@ -12,18 +12,23 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import app.el_even.priceupdater.R
-import app.el_even.priceupdater.databinding.ListProductFragmentsFragmentBinding
+import app.el_even.priceupdater.configs.ProductAdapter
+import app.el_even.priceupdater.databinding.ListProductFragmentBinding
 import app.el_even.priceupdater.views.viewmodels.ListProductFragmentsViewModel
 import app.el_even.priceupdater.views.viewmodels.ListProductFragmentsViewModelFactory
 import timber.log.Timber
 
+/**
+ * @author el_even
+ * @version 1.0
+ */
 class ListProductFragments : Fragment() {
 
     private val viewModel: ListProductFragmentsViewModel by viewModels {
         ListProductFragmentsViewModelFactory(application = requireActivity().application)
     }
 
-    private lateinit var binding: ListProductFragmentsFragmentBinding
+    private lateinit var binding: ListProductFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +36,13 @@ class ListProductFragments : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.list_product_fragments_fragment,
+            R.layout.list_product_fragment,
             container,
             false
         )
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
 
         // Init view
         viewModel.isFabClicked.observe(viewLifecycleOwner) { isAdded ->
@@ -52,17 +58,17 @@ class ListProductFragments : Fragment() {
 
     private fun openUrlDialog(context: Context) =
         AlertDialog.Builder(context).setCancelable(false).also { builder ->
-            builder.setTitle("Paste your URL here")
+            builder.setTitle(getString(R.string.url_dialog_title))
             val input = EditText(context).also { et ->
-                et.hint = "http://www..."
+                et.hint = getString(R.string.url_hint)
                 et.inputType = InputType.TYPE_TEXT_VARIATION_URI
             }
             builder.setView(input)
-            builder.setPositiveButton("OK") { dialog, _ ->
+            builder.setPositiveButton(getString(R.string.ok_btn)) { dialog, _ ->
                 viewModel.addNewProduct(input.text.toString())
                 dialog.cancel()
             }
-            builder.setNegativeButton("Cancel") { dialog, _ ->
+            builder.setNegativeButton(getString(R.string.cancel_btn)) { dialog, _ ->
                 dialog.cancel()
             }
         }.show()
