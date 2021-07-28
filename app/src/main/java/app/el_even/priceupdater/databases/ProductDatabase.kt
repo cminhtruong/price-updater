@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import app.el_even.priceupdater.configs.DATABASE_NAME
 import app.el_even.priceupdater.configs.DATABASE_VERSION
-import app.el_even.priceupdater.models.Product
+import app.el_even.priceupdater.models.local.Product
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

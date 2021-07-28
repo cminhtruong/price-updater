@@ -5,9 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import app.el_even.priceupdater.databinding.DetailProductFragmentBinding
 import app.el_even.priceupdater.databinding.ProductItemBinding
-import app.el_even.priceupdater.models.Product
+import app.el_even.priceupdater.models.local.Product
 
 /**
  * @author el_even

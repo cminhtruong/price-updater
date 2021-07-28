@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import app.el_even.priceupdater.R
-import app.el_even.priceupdater.views.viewmodels.DetailProductFragmentsViewModel
+import app.el_even.priceupdater.views.viewmodels.DetailProductViewModel
 
 class DetailProductFragments : Fragment() {
 
@@ -15,7 +15,7 @@ class DetailProductFragments : Fragment() {
         fun newInstance() = DetailProductFragments()
     }
 
-    private lateinit var viewModel: DetailProductFragmentsViewModel
+    private lateinit var viewModel: DetailProductViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,7 @@ class DetailProductFragments : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailProductFragmentsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DetailProductViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

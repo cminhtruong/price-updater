@@ -1,7 +1,7 @@
 package app.el_even.priceupdater.databases
 
 import androidx.annotation.WorkerThread
-import app.el_even.priceupdater.models.Product
+import app.el_even.priceupdater.models.local.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
@@ -15,9 +15,8 @@ class ProductRepository(private val database: ProductDatabase) {
     val products: Flow<List<Product>> = database.productsDao().loadProducts()
 
     @WorkerThread
-    suspend fun addNewProduct(url: String) {
+    suspend fun addNewProduct(product: Product) {
         withContext(Dispatchers.IO) {
-
             database.productsDao().insertNewProduct()
         }
     }

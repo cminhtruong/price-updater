@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="product"
-            type="app.el_even.priceupdater.models.Product" />
+            type="app.el_even.priceupdater.models.local.Product" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -22,6 +23,7 @@
 
             <ImageView
                 android:id="@+id/imageView"
+                imageUrl="@{product.image[0]}"
                 android:layout_width="128dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
@@ -38,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:text="@{product.name}"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,6 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:text="@{String.valueOf(product.newPrice) + `€`}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"

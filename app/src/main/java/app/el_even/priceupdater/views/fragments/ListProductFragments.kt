@@ -12,9 +12,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import app.el_even.priceupdater.R
-import app.el_even.priceupdater.configs.ProductAdapter
 import app.el_even.priceupdater.databinding.ListProductFragmentBinding
-import app.el_even.priceupdater.views.viewmodels.ListProductFragmentsViewModel
+import app.el_even.priceupdater.views.viewmodels.ListProductViewModel
 import app.el_even.priceupdater.views.viewmodels.ListProductFragmentsViewModelFactory
 import timber.log.Timber
 
@@ -24,7 +23,7 @@ import timber.log.Timber
  */
 class ListProductFragments : Fragment() {
 
-    private val viewModel: ListProductFragmentsViewModel by viewModels {
+    private val viewModel: ListProductViewModel by viewModels {
         ListProductFragmentsViewModelFactory(application = requireActivity().application)
     }
 

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="app.el_even.priceupdater.views.viewmodels.ListProductFragmentsViewModel" />
+            type="app.el_even.priceupdater.views.viewmodels.ListProductViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

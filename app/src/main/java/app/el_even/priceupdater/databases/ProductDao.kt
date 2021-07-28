@@ -1,7 +1,7 @@
 package app.el_even.priceupdater.databases
 
 import androidx.room.*
-import app.el_even.priceupdater.models.Product
+import app.el_even.priceupdater.models.local.Product
 import kotlinx.coroutines.flow.Flow
 
 /**
