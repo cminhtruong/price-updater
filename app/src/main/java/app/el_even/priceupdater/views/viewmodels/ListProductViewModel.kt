@@ -57,10 +57,14 @@ class ListProductViewModel(application: Application) : ViewModel() {
     }
 
     fun extractProduct(url: String){
+        Timber.d("extractProduct with $url")
         val doc = Jsoup.connect(url).get()
         doc.select(".prdct__name")
-            .forEach { element ->
-                Timber.d("element: $element")
+            .map {
+                Timber.d("it $it")
+            }.parallelStream()
+            .forEach {
+                Timber.d("element: $it")
             }
     }
 }
