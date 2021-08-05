@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.el_even.priceupdater.models.local.Product
 import com.squareup.picasso.Picasso
 import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
@@ -36,16 +37,24 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 fun getElementsByAttributeValue(html: String, attribute: String, name: String): Elements =
     Jsoup.parse(html).html(html).getElementsByAttributeValue(attribute, name)
 
-
 /**
  * Function allows to decode html content and retrieve the class value
  *
- * @param html: HTML content
+ * @param css: CSS attributes
  * @param className: HTML class
- * @return Elements HTML
+ * @return A value of html element
  */
-fun getElementsByClass(html: String, className: String): Elements =
-    Jsoup.parse(html).html(html).getElementsByClass(className)
+fun Document.getValueByClass(css: String, className: String): String {
+    var item = ""
+    this.select(css)
+        .map { ele ->
+            ele.getElementsByClass(className).first()?.text()
+        }.parallelStream()
+        .forEach {
+            if (it != null) item = it
+        }
+    return item
+}
 
 /**
  * Function allows to decode html content and retrieve the tag value

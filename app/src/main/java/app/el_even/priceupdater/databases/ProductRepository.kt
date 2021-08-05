@@ -4,6 +4,9 @@ import androidx.annotation.WorkerThread
 import app.el_even.priceupdater.models.local.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 /**
@@ -12,12 +15,12 @@ import kotlinx.coroutines.withContext
  */
 class ProductRepository(private val database: ProductDatabase) {
 
-    val products: Flow<List<Product>> = database.productsDao().loadProducts()
+    val products: Flow<List<Product>> = database.productsDao().loadProducts().flowOn(Dispatchers.IO)
 
     @WorkerThread
     suspend fun addNewProduct(product: Product) {
         withContext(Dispatchers.IO) {
-            database.productsDao().insertNewProduct()
+            database.productsDao().insertNewProduct(product)
         }
     }
 

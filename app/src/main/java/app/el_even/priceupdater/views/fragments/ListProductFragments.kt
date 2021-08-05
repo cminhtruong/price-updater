@@ -11,10 +11,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import app.el_even.priceupdater.R
 import app.el_even.priceupdater.databinding.ListProductFragmentBinding
 import app.el_even.priceupdater.views.viewmodels.ListProductViewModel
 import app.el_even.priceupdater.views.viewmodels.ListProductFragmentsViewModelFactory
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -40,15 +45,17 @@ class ListProductFragments : Fragment() {
             false
         )
         binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        binding.lifecycleOwner = this
 
         // Init view
-        viewModel.isFabClicked.observe(viewLifecycleOwner) { isAdded ->
-            if (isAdded) {
-                Timber.d("Add new item")
-                openUrlDialog(requireContext())
-                viewModel.addNewUrlDone()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isFabClicked.collect { isClicked ->
+                    if (isClicked) {
+                        openUrlDialog(requireContext())
+                        viewModel.addNewUrlDone()
+                    }
+                }
             }
         }
 

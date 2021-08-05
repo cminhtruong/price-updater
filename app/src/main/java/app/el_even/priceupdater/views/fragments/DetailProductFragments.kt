@@ -1,33 +1,29 @@
 package app.el_even.priceupdater.views.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import app.el_even.priceupdater.R
+import app.el_even.priceupdater.databinding.DetailProductFragmentBinding
 import app.el_even.priceupdater.views.viewmodels.DetailProductViewModel
 
 class DetailProductFragments : Fragment() {
 
-    companion object {
-        fun newInstance() = DetailProductFragments()
-    }
-
-    private lateinit var viewModel: DetailProductViewModel
+    private val viewModel: DetailProductViewModel by viewModels()
+    private lateinit var binding: DetailProductFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.detail_product_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailProductViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.detail_product_fragment, container, false)
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
 }

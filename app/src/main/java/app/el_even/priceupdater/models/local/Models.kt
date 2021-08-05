@@ -17,11 +17,12 @@ data class Product(
     val oldPrice: Float,
     val newPrice: Float? = 0.0f,
     val date: String,
-    val brand: Brand,
+    val brand: String,
+    val sources: Sources,
     val status: String
 )
 
-enum class Brand {
+enum class Sources {
     NOCIBE,
     SEPHORA,
     MARIONNAUD

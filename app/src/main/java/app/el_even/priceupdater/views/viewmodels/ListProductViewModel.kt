@@ -1,27 +1,33 @@
 package app.el_even.priceupdater.views.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import app.el_even.priceupdater.configs.getValueByClass
 import app.el_even.priceupdater.databases.ProductDatabase
 import app.el_even.priceupdater.databases.ProductRepository
 import app.el_even.priceupdater.models.local.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.jsoup.Jsoup
 import timber.log.Timber
-import java.lang.IllegalArgumentException
 
 /**
  * @author el_even
  * @version 1.0
  */
 class ListProductViewModel(application: Application) : ViewModel() {
-    private val _isFabClicked = MutableLiveData<Boolean>()
-    val isFabClicked: LiveData<Boolean> = _isFabClicked
+    private val _isFabClicked = MutableStateFlow(false)
+    val isFabClicked: StateFlow<Boolean> = _isFabClicked
 
-    private val _isProgressBarDisplayed = MutableLiveData<Boolean>()
-    val isProgressBarDisplayed: LiveData<Boolean> = _isProgressBarDisplayed
+    private val _isProgressBarDisplayed = MutableStateFlow(false)
+    val isProgressBarDisplayed: StateFlow<Boolean> = _isProgressBarDisplayed
 
     private val repository = ProductRepository(
         ProductDatabase.getDatabase(
@@ -30,9 +36,12 @@ class ListProductViewModel(application: Application) : ViewModel() {
         )
     )
 
-    val products: LiveData<List<Product>> = repository.products.asLiveData()
+    val products: StateFlow<List<Product>> = repository.products.stateIn(
+        viewModelScope, SharingStarted.Lazily, listOf()
+    )
 
     init {
+        Timber.d("init")
         _isFabClicked.value = false
         _isProgressBarDisplayed.value = false
         extractProduct("https://www.nocibe.fr/gucci-bloom-acqua-di-fiori-eau-de-toilette-50-ml-s226033")
@@ -49,24 +58,37 @@ class ListProductViewModel(application: Application) : ViewModel() {
     fun addNewProduct(url: String) {
         Timber.d("url: $url")
         viewModelScope.launch(Dispatchers.IO) {
-            _isProgressBarDisplayed.postValue(true)
+            _isProgressBarDisplayed.value = true
 
             delay(5000)
-            _isProgressBarDisplayed.postValue(false)
+            _isProgressBarDisplayed.value = false
         }
     }
 
-    fun extractProduct(url: String){
+    private fun extractProduct(url: String) {
         Timber.d("extractProduct with $url")
-        val doc = Jsoup.connect(url).get()
-        doc.select(".prdct__name")
-            .map {
-                Timber.d("it $it")
-            }.parallelStream()
-            .forEach {
-                Timber.d("element: $it")
-            }
+        when {
+            "nocibe" in url -> extractNocibeProduct(url)
+            "sephora" in url -> extractSephoraProduct(url)
+            "marionnaud" in url -> extractMarionnaudProduct(url)
+        }
     }
+
+    private fun extractNocibeProduct(url: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val doc = Jsoup.connect(url).get()
+            val brand = doc.getValueByClass(".prdct__name", "prdct__name")
+        }
+    }
+
+    private fun extractSephoraProduct(url: String) {
+
+    }
+
+    private fun extractMarionnaudProduct(url: String) {
+
+    }
+
 }
 
 class ListProductFragmentsViewModelFactory(private val application: Application) :
