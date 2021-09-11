@@ -1,12 +1,11 @@
-package app.el_even.priceupdater.databases
+package app.el_even.priceupdater.core.data
 
 import androidx.annotation.WorkerThread
+import app.el_even.priceupdater.app.framework.databases.ProductDatabase
 import app.el_even.priceupdater.models.local.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 /**

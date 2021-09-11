@@ -1,12 +1,12 @@
-package app.el_even.priceupdater.views.viewmodels
+package app.el_even.priceupdater.app.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import app.el_even.priceupdater.configs.getValueByClass
-import app.el_even.priceupdater.databases.ProductDatabase
-import app.el_even.priceupdater.databases.ProductRepository
+import app.el_even.priceupdater.utils.getValueByClass
+import app.el_even.priceupdater.app.framework.databases.ProductDatabase
+import app.el_even.priceupdater.core.data.ProductRepository
 import app.el_even.priceupdater.models.local.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

@@ -1,4 +1,4 @@
-package app.el_even.priceupdater.views.fragments
+package app.el_even.priceupdater.app.presentation.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -16,11 +16,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import app.el_even.priceupdater.R
 import app.el_even.priceupdater.databinding.ListProductFragmentBinding
-import app.el_even.priceupdater.views.viewmodels.ListProductViewModel
-import app.el_even.priceupdater.views.viewmodels.ListProductFragmentsViewModelFactory
+import app.el_even.priceupdater.app.presentation.viewmodels.ListProductViewModel
+import app.el_even.priceupdater.app.presentation.viewmodels.ListProductFragmentsViewModelFactory
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * @author el_even

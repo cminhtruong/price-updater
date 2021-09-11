@@ -9,13 +9,13 @@
 
         <variable
             name="viewModel"
-            type="app.el_even.priceupdater.views.viewmodels.ListProductViewModel" />
+            type="app.el_even.priceupdater.app.presentation.viewmodels.ListProductViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.fragments.ListProductFragments">
+        tools:context=".app.presentation.fragments.ListProductFragments">
 
         <TextView
             android:id="@+id/textView3"

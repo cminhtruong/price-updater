@@ -1,4 +1,4 @@
-package app.el_even.priceupdater.databases
+package app.el_even.priceupdater.app.framework.databases
 
 import androidx.room.TypeConverter
 import kotlinx.serialization.decodeFromString

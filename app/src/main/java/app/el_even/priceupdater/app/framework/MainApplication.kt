@@ -1,4 +1,4 @@
-package app.el_even.priceupdater
+package app.el_even.priceupdater.app.framework
 
 import android.app.Application
 import timber.log.Timber

@@ -1,4 +1,4 @@
-package app.el_even.priceupdater.views.activities
+package app.el_even.priceupdater.app.presentation.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

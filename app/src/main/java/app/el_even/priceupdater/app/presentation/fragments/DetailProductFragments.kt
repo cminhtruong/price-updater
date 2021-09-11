@@ -1,4 +1,4 @@
-package app.el_even.priceupdater.views.fragments
+package app.el_even.priceupdater.app.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import app.el_even.priceupdater.R
 import app.el_even.priceupdater.databinding.DetailProductFragmentBinding
-import app.el_even.priceupdater.views.viewmodels.DetailProductViewModel
+import app.el_even.priceupdater.app.presentation.viewmodels.DetailProductViewModel
 
 class DetailProductFragments : Fragment() {
 

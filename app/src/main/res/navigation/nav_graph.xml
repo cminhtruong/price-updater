@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listProductFragments"
-        android:name="app.el_even.priceupdater.views.fragments.ListProductFragments"
+        android:name="app.el_even.priceupdater.app.presentation.fragments.ListProductFragments"
         android:label="list_product_fragments_fragment"
         tools:layout="@layout/list_product_fragment" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailProductFragments"
-        android:name="app.el_even.priceupdater.views.fragments.DetailProductFragments"
+        android:name="app.el_even.priceupdater.app.presentation.fragments.DetailProductFragments"
         android:label="detail_product_fragments_fragment"
         tools:layout="@layout/detail_product_fragment" />
 </navigation>

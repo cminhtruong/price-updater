@@ -1,4 +1,4 @@
-package app.el_even.priceupdater.databases
+package app.el_even.priceupdater.app.framework.databases
 
 import android.content.Context
 import androidx.room.Database
@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import app.el_even.priceupdater.configs.DATABASE_NAME
-import app.el_even.priceupdater.configs.DATABASE_VERSION
+import app.el_even.priceupdater.utils.DATABASE_NAME
+import app.el_even.priceupdater.utils.DATABASE_VERSION
 import app.el_even.priceupdater.models.local.Product
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

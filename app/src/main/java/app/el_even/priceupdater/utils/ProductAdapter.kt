@@ -1,4 +1,4 @@
-package app.el_even.priceupdater.configs
+package app.el_even.priceupdater.utils
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
